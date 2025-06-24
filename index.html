@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pritsam Patrick Dabre - Data Scientist & AI Engineer</title>
+    <link rel="stylesheet" href="stars.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* Variables */
+        :root {
+            --primary: #0f172a;
+            --secondary: #38bdf8;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        main {
+            background-color: transparent;
+        }
+        
+        section {
+            background-color: transparent;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(10, 25, 47, 0.85);
+            transition: var(--transition);
+        }
+
+        .nav-logo .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            text-align: left;
+        }
+
+        .glitch {
+            font-size: 4rem;
+            font-weight: 700;
+            position: relative;
+            text-shadow: 0.05em 0 0 var(--accent), -0.025em -0.05em 0 #60a5fa;
+            animation: glitch 1s infinite;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--accent);
+            margin: 2rem 0;
+            max-width: 800px;
+            line-height: 1.5;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-right: 1rem;
+            transition: var(--transition);
+        }
+
+        .cta-button.primary {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .cta-button.secondary {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.1);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 4rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-line {
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            color: var(--text-secondary);
+        }
+
+        .about-image {
+            position: relative;
+            max-width: 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            filter: grayscale(100%);
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            filter: grayscale(0%);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+            z-index: -1;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            padding: 100px 4rem;
+        }
+
+        .tech-stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .tech-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-icon:hover {
+            transform: translateY(-5px);
+        }
+
+        .tech-icon img, .tech-icon svg {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .tech-icon span {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Experience Section */
+        .experience-section {
+            padding: 100px 4rem;
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: var(--accent);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background: var(--bg-secondary);
+            position: relative;
+            border-radius: 6px;
+        }
+        
+        .timeline-item .timeline-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .timeline-item .timeline-content ul {
+            padding-left: 20px;
+            text-align: left;
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent);
+            border: 4px solid var(--bg-primary);
+            top: 28px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -31px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -31px;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 100px 4rem;
+        }
+
+        .project-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background-color: #112240;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease-in-out;
+            border: 1px solid #1e293b;
+            flex: 1 1 350px;
+            max-width: 400px;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+             border-color: var(--accent);
+        }
+
+        .project-image-wrapper {
+            overflow: hidden;
+            border-radius: 8px 8px 0 0;
+            flex-shrink: 0;
+        }
+        
+        .project-image-wrapper img {
+            width: 100%;
+            display: block;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover .project-image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .project-header {
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .project-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech span {
+            background-color: #1e293b;
+            color: var(--text-secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .project-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            color: var(--accent);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 4rem;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .email-link {
+            color: var(--accent);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-icon {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--bg-secondary);
+        }
+
+        /* Animations */
+        @keyframes glitch {
+            0% { text-shadow: 0.05em 0 0 var(--accent), -0.025em -0.05em 0 #60a5fa; }
+            14% { text-shadow: 0.05em 0 0 var(--accent), -0.025em -0.05em 0 #60a5fa; }
+            15% { text-shadow: -0.05em -0.025em 0 var(--accent), -0.025em -0.05em 0 #60a5fa; }
+            49% { text-shadow: -0.05em -0.025em 0 var(--accent), -0.025em -0.05em 0 #60a5fa; }
+            50% { text-shadow: 0.025em 0.05em 0 var(--accent), 0.05em 0 0 #60a5fa; }
+            99% { text-shadow: 0.025em 0.05em 0 var(--accent), 0.05em 0 0 #60a5fa; }
+            100% { text-shadow: -0.025em 0 0 var(--accent), -0.025em -0.05em 0 #60a5fa; }
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            .nav-links {
+                margin-top: 1rem;
+                gap: 1rem;
+            }
+            .hero-section { padding: 0 2rem; }
+            .glitch { font-size: 2.5rem; }
+            .about-content { grid-template-columns: 1fr; }
+            .timeline::before { left: 20px; }
+            .timeline-item, .timeline-item:nth-child(even) {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 0;
+                text-align: left;
+            }
+            .timeline-item:nth-child(odd) {
+                text-align: left;
+            }
+
+            .timeline-content::after, 
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -31px;
+                right: auto;
+            }
+            .projects-section, .about-section, .experience-section, .contact-section { padding: 80px 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="stars-container"></div>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <span class="logo-text">Pritsam.tech</span>
+        </div>
+        <div class="nav-links">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#education" class="nav-link">Education</a>
+            <a href="#experience" class="nav-link">Experience</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1 class="glitch" data-text="Hi, I'm Pritsam">Hi, I'm Pritsam</h1>
+                <div class="hero-subtitle">
+                    AI/ML Engineer | Data Scientist @ S&P Global | NLP & Time Series | PySpark, AWS, LLMs | Predictive Modeling for Scalable Impact
+                </div>
+                <div class="hero-cta">
+                    <a href="#projects" class="cta-button primary">View Projects</a>
+                    <a href="#contact" class="cta-button secondary">Get in Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Machine Learning & Generative AI Engineer with 3+ years of experience building end-to-end AI solutions across computer vision, NLP, and predictive analytics. Skilled in designing and deploying deep learning models (CNNs, LSTMs, transformers) and optimizing them for real-world performance using quantization and model compression. Proficient in Python (NumPy, Pandas, SciPy), PyTorch, TensorFlow, and AWS cloud services. Passionate about driving business impact through scalable, efficient AI systems and innovative generative model applications.</p>
+                </div>
+                <div class="about-image">
+                    <img src="images/profile.jpg" alt="Pritsam Patrick Dabre">
+                    <div class="image-overlay"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills-section">
+            <div class="section-header">
+                <h2>Skills</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="tech-stack-grid">
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"><span>Python</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="R"><span>R</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL"><span>SQL</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-original.svg" alt="Scala"><span>Scala</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/julia/julia-original.svg" alt="Julia"><span>Julia</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg" alt="MATLAB"><span>MATLAB</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"><span>JavaScript</span></div>
+                <div class="tech-icon"><img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" alt="Bash"><span>Bash</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow"><span>TensorFlow</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch"><span>PyTorch</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/keras/keras-original.svg" alt="Keras"><span>Keras</span></div>
+                <div class="tech-icon"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face"><span>Hugging Face</span></div>
+                <div class="tech-icon"><img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" alt="Tableau"><span>Tableau</span></div>
+                <div class="tech-icon"><img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" alt="Power BI"><span>Power BI</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"><span>PostgreSQL</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB"><span>MongoDB</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cassandra/cassandra-original.svg" alt="Cassandra"><span>Cassandra</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis"><span>Redis</span></div>
+                <div class="tech-icon">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" color="#FFFFFF">
+                        <title>Amazon Web Services</title>
+                        <path d="M13.832 1.324a1.031 1.031 0 0 0-1.023.003L.47 8.051a1.031 1.031 0 0 0-.47 1.025v6.526a1.031 1.031 0 0 0 .473 1.022l12.446 6.845a1.033 1.033 0 0 0 1.023.003l12.338-6.73a1.031 1.031 0 0 0 .58-1.025V9.066a1.031 1.031 0 0 0-.58-1.025L13.832 1.324zM2.523 9.34l10.203-5.61 10.095 5.51-10.095 5.61-10.203-5.51zm10.203 12.333L2.341 15.8l10.385-5.776 10.26 5.64-10.26 5.86z"/>
+                    </svg>
+                    <span>AWS</span>
+                </div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP"><span>GCP</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure"><span>Azure</span></div>
+                <div class="tech-icon"><img src="https://www.vectorlogo.zone/logos/databricks/databricks-icon.svg" alt="Databricks"><span>Databricks</span></div>
+                <div class="tech-icon"><img src="https://www.vectorlogo.zone/logos/apache_spark/apache_spark-icon.svg" alt="Spark"><span>Spark</span></div>
+                <div class="tech-icon"><img src="https://www.vectorlogo.zone/logos/apache_kafka/apache_kafka-icon.svg" alt="Kafka"><span>Kafka</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"><span>Docker</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes"><span>Kubernetes</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="Terraform"><span>Terraform</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" alt="Jenkins"><span>Jenkins</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"><span>Git</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"><span>GitHub</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bitbucket/bitbucket-original.svg" alt="Bitbucket"><span>Bitbucket</span></div>
+                <div class="tech-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg" alt="Excel"><span>Excel</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"><span>Linux</span></div>
+                <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" alt="Windows"><span>Windows</span></div>
+            </div>
+        </section>
+
+        <section id="education" class="experience-section">
+            <div class="section-header">
+                <h2>Education</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-graduation-cap" style="color:var(--accent);margin-right:8px;"></i> Master of Science in Computer Science (MS) <span style="font-size:0.9em;color:var(--text-secondary);">2022 - 2024</span></h3>
+                        <p>California State University - San Marcos, San Marcos, CA | CGPA: 3.8</p>
+                        <ul>
+                            <li>Relevant Coursework: Machine Learning • Artificial Intelligence • Artificial Neural Networks and Forecasting • Data Communication & Computer Networks • Advanced IoT • Introduction to Data Mining • Design Patterns and Object-Oriented Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-graduation-cap" style="color:var(--accent);margin-right:8px;"></i> Bachelor of Engineering in Information Technology (BE) <span style="font-size:0.9em;color:var(--text-secondary);">2018 - 2022</span></h3>
+                        <p>Mumbai University- Mumbai, India | CGPA: 3.7</p>
+                        <ul>
+                            <li>Relevant Coursework: Design & Analysis of Algorithms • Database Management Systems • Data Structures using C++ • Object-Oriented Programming • Cloud Computing • Operating Systems</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="experience-section">
+            <div class="section-header">
+                <h2>Work Experience</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-brain" style="color:var(--accent);margin-right:8px;"></i> S&P Global, USA | Data Scientist <span style="font-size:0.9em;color:var(--text-secondary);">Aug 2023 – Current</span></h3>
+                        <ul>
+                            <li>Spearheaded the development and deployment of machine learning models (e.g., XGBoost, ARIMA, neural networks) to improve business decision-making accuracy.</li>
+                            <li>Streamlined modeling workflows by 40% through efficient Python/SQL scripting. Built scalable ETL pipelines using PySpark, Kafka, and Spark Streaming.</li>
+                            <li>Leveraged AWS and Snowflake for big data processing. Enhanced LLM retrieval systems with FAISS, deployed models via CI/CD (Docker, Jenkins), and built dashboards in Power BI/Tableau to reduce reporting time by 40%.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-chart-line" style="color:var(--accent);margin-right:8px;"></i> Maruti TechLabs, India | Data Scientist <span style="font-size:0.9em;color:var(--text-secondary);">Jan 2019 - July 2022</span></h3>
+                        <ul>
+                            <li>Led end-to-end data science projects with a focus on NLP and predictive modeling, improving business KPIs by up to 25%.</li>
+                            <li>Applied ML techniques like SVM, XGBoost, and clustering to derive actionable insights. Automated reporting with Power BI, reducing manual effort by 40%.</li>
+                            <li>Optimized compute using AWS EC2, cutting model training time by 50%. Developed models to enhance marketing ROI and predict customer behavior with up to 92% accuracy.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="project-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?q=80&w=1470" alt="Movie Recommender System">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Content-Based Movie Recommender System</h3>
+                        </div>
+                        <p class="project-date">Fall 2023</p>
+                        <p class="project-description">Built an intelligent movie recommender using Python, scikit-learn, and Streamlit. The system analyzed movie metadata to compute similarity scores and deliver top-N recommendations. Integrated cosine similarity and fuzzy matching for enhanced accuracy. Deployed on Heroku for live user access.</p>
+                        <div class="project-tech">
+                            <span>Python</span><span>scikit-learn</span><span>Streamlit</span><span>NLP</span><span>Heroku</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Pritsam2/Movie-Recommender-System" class="project-link" target="_blank"><i class="fab fa-github"></i> Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1470" alt="Email Spam Classifier">
+                    </div>
+                    <div class="project-content">
+                         <div class="project-header">
+                            <h3 class="project-title">Email Spam Classifier – ML Web App</h3>
+                        </div>
+                        <p class="project-date">Summer 2023</p>
+                        <p class="project-description">Developed a Flask-based web app that classifies emails as spam or ham using NLP and Multinomial Naïve Bayes. Performed tokenization, stopword removal, and CountVectorizer-based vectorization. Deployed the fully functional app on PythonAnywhere with an interactive UI.</p>
+                        <div class="project-tech">
+                            <span>Python</span><span>Flask</span><span>NLP</span><span>scikit-learn</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Pritsam2/Email-Spam-Classifier-ML-Web-App" class="project-link" target="_blank"><i class="fab fa-github"></i> Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1470" alt="Image Classification with CNNs">
+                    </div>
+                    <div class="project-content">
+                         <div class="project-header">
+                            <h3 class="project-title">End-to-End Image Classification with CNNs</h3>
+                        </div>
+                        <p class="project-date">Spring 2023</p>
+                        <p class="project-description">Designed and trained a custom CNN using TensorFlow and Keras to classify multi-class images. Included advanced preprocessing, data augmentation, and model tuning. Final model enabled command-line predictions for real-time usage.</p>
+                        <div class="project-tech">
+                            <span>Python</span><span>TensorFlow</span><span>Keras</span><span>CNN</span>
+                        </div>
+                        <div class="project-links">
+                             <a href="https://github.com/Pritsam2/End-to-End-Image-Classification-with-CNNs" class="project-link" target="_blank"><i class="fab fa-github"></i> Source</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="section-header">
+                <h2>Get in Touch</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-content">
+                <p class="contact-text">Want to chat? Just shoot me a dm with a direct question on <a href="mailto:pritsamdabre@gmail.com" class="email-link">email</a> and I'll respond whenever I can.</p>
+                <div class="social-links">
+                    <a href="/" class="social-icon" title="Home"><i class="fas fa-home"></i></a>
+                    <a href="Public/Pritsamdabre - Data Scientist5.pdf" class="social-icon" title="Resume"><i class="fas fa-file-alt"></i></a>
+                    <a href="https://github.com/Pritsam2" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/pritsam-patrick-dabre/" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:pritsamdabre@gmail.com" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Pritsam Patrick Dabre. All rights reserved.</p>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="stars.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Hero section
+            gsap.from('.hero-content', { y: 100, opacity: 0, duration: 1, ease: 'power4.out' });
+
+            // About section
+            gsap.from('.about-content', {
+                scrollTrigger: { trigger: '.about-section', start: 'top 80%', toggleActions: 'play none none reverse' },
+                y: 60, opacity: 0, duration: 1, stagger: 0.2
+            });
+            
+            // Skills section
+            gsap.from('.tech-icon', {
+                scrollTrigger: { trigger: '.skills-section', start: 'top 80%', toggleActions: 'play none none reverse' },
+                y: 50, opacity: 0, duration: 0.5, stagger: 0.05
+            });
+
+            // Experience timeline
+            gsap.from('.timeline-item', {
+                scrollTrigger: { trigger: '.experience-section', start: 'top 80%', toggleActions: 'play none none reverse' },
+                y: 50, opacity: 0, duration: 0.8, stagger: 0.3
+            });
+
+            // Project cards
+            gsap.from('.project-card', {
+                scrollTrigger: { trigger: '.projects-section', start: 'top 80%', toggleActions: 'play none none reverse' },
+                y: 80, opacity: 0, duration: 0.8, stagger: 0.2
+            });
+            
+            // Contact Section
+            gsap.from('.contact-content', {
+                scrollTrigger: { trigger: '.contact-section', start: 'top 80%', toggleActions: 'play none none reverse' },
+                y: 50, opacity: 0, duration: 1
+            });
+
+            // Active Nav Link on Scroll
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            function updateNav() {
+                let scrollY = window.pageYOffset;
+                let currentSection = "";
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (scrollY >= sectionTop) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(currentSection) && currentSection !== "") {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', updateNav);
+            updateNav();
+        });
+    </script>
+</body>
+</html>
+
